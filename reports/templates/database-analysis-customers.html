@@ -1,0 +1,74 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block page-title %}
+<title>Customers Database Analysis Report</title>
+{% endblock %}
+
+{% block nav-active %}
+<li><a href="{% url 'home' %}">Home</a></li>
+<li><a href="#">Executive Summary</a></li>
+<li class="active"><a href="{% url 'database-analysis' %}">Database Analysis</a></li>
+<li><a href="{% url 'comm-analysis' %}">Communication Analysis</a></li>
+<li><a href="{% url 'service-analysis' %}">Service Analysis</a></li>
+<li><a href="#">Vehicle Analysis</a></li>
+<li><a href="#">Segment Analysis</a></li>
+{% endblock %}
+
+{% block page-header %}
+<h1 class="page-header" align="center">Customers Database Analysis Report</h1><br>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-fit table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Customer Type</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Address Line 1</th>
+                    <th>Address Line 2</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>ZIP Code</th>
+                    <th>Home Phone</th>
+                    <th>Mobile Phone</th>
+                    <th>Work Phone</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.customer_type }}</td>
+                    <td>{{ customer.first_name }}</td>
+                    <td>{{ customer.last_name }}</td>
+                    <td>{{ customer.address_one }}</td>
+                    <td>{{ customer.address_two }}</td>
+                    <td>{{ customer.city }}</td>
+                    <td>{{ customer.state }}</td>
+                    <td>{{ customer.zip }}</td>
+                    <td>{{ customer.home_phone }}</td>
+                    <td>{{ customer.mobile_phone }}</td>
+                    <td>{{ customer.work_phone }}</td>
+                    <td>{{ customer.email }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

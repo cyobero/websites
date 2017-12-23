@@ -1,0 +1,61 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    {% block page-title %}
+    <title>Affinitiv Reporting Portal</title>
+    {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+
+            <!-- Brand and Toggle get grouped together for better mobile display -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#home-nav">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">Affinitiv Reports</a>
+        </div>
+
+        <!-- Collect nav bar links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="home-nav">
+            <ul class="nav navbar-nav">
+
+                {% block nav-active %}
+                <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#">Executive Summary</a> </li>
+                <li><a href="{% url 'database-analysis' %}">Database Analysis</a></li>
+                <li><a href="{% url 'comm-analysis' %}">Communication Analysis</a></li>
+                <li><a href="{% url 'service-analysis' %}">Service Analysis</a> </li>
+                <li><a href="#">Vehicle Analysis</a> </li>
+                <li><a href="#">Segment Analysis</a> </li>
+                {% endblock %}
+            </ul>
+        </div> <!-- ./navbar-collapse -->
+    </div> <!-- ./container-fluid -->
+</nav>
+
+{% block page-header %}
+<h1 class="page-header" align="center">Affinitiv Reports</h1><br>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

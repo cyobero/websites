@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block page-title %}
+<title>Communication Analysis</title>
+{% endblock %}
+
+{% block nav-active %}
+<li><a href="{% url 'home' %}">Home</a></li>
+<li><a href="#">Executive Summary</a></li>
+<li><a href="{% url 'database-analysis' %}">Database Analysis</a></li>
+<li class="active"><a href="#">Communication Analysis</a></li>
+<li><a href="{% url 'service-analysis' %}">Service Analysis</a></li>
+<li><a href="#">Vehicle Analysis</a></li>
+<li><a href="#">Segment Analysis</a></li>
+{% endblock %}
+
+{% block page-header %}
+<h1 class="page-header" align="center">Communication Analysis</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <a href="{% url 'comm-analysis-emails' %}">
+                <img src="{% static 'folder_icon_navy_blue.png' %}" width="55" height="50">
+                <p>Email Communications</p>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="{% url 'comm-analysis-phones' %}">
+                <img src="{% static 'folder_icon_navy_blue.png' %}" width="55" height="50">
+                <p>Phone Communications</p>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="{% url 'comm-analysis-letters' %}">
+                <img src="{% static 'folder_icon_navy_blue.png' %}" width="55" height="50">
+                <p>Letter Communications</p>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

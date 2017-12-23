@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block page-title %}
+<title>Database Analysis Reports</title>
+{% endblock %}
+
+{% block nav-active %}
+<li><a href="{% url 'home' %}">Home</a></li>
+<li><a href="#">Executive Summary</a></li>
+<li class="active"><a href="#">Database Analysis</a></li>
+<li><a href="{% url 'comm-analysis' %}">Communication Analysis</a></li>
+<li><a href="{% url 'service-analysis' %}">Service Analysis</a></li>
+<li><a href="#">Vehicle Analysis</a></li>
+<li><a href="#">Segment Analysis</a></li>
+{% endblock %}
+
+{% block page-header %}
+<h1 class="page-header" align="center">Database Analysis Reports</h1><br>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <a href="{% url 'database-analysis-customers' %}">
+                <img src="{% static 'folder_icon_navy_blue.png' %}" height="55" width="50">
+                <p>Customers</p>
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a href="{% url 'database-analysis-dealers' %}">
+                <img src="{% static 'folder_icon_navy_blue.png' %}" height="55" width="50">
+                <p>Dealers</p>
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a href="{% url 'database-analysis-dealerships' %}">
+                <img src="{% static 'folder_icon_navy_blue.png' %}" height="55" width="50">
+                <p>Dealerships</p>
+            </a>
+        </div>
+
+        <div class="col-md-3">
+            <a href="{% url 'database-analysis-vehicles' %}">
+                <img src="{% static 'folder_icon_navy_blue.png' %}" height="55" width="50">
+                <p>Vehicles</p>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

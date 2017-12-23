@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block page-title %}
+<title>Dealerships Database Analysis Report</title>
+{% endblock %}
+
+{% block nav-active %}
+<li><a href="{% url 'home' %}">Home</a></li>
+<li><a href="#">Executive Summary</a></li>
+<li class="active"><a href="{% url 'database-analysis' %}">Database Analysis</a></li>
+<li><a href="{% url 'comm-analysis' %}">Communication Analysis</a></li>
+<li><a href="{% url 'service-analysis' %}">Service Analysis</a></li>
+<li><a href="#">Vehicle Analysis</a></li>
+<li><a href="#">Segment Analysis</a></li>
+{% endblock %}
+
+{% block page-header %}
+<h1 class="page-header" align="center">Dealerships Database Analysis Report</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-fit table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Dealership</th>
+                    <th>Address Line 1</th>
+                    <th>Address Line 2</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>ZIP Code</th>
+                    <th>Phone</th>
+                    <th>URL</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for dealership in dealerships %}
+                <tr>
+                    <td>{{ dealership.name }}</td>
+                    <td>{{ dealership.address_one }}</td>
+                    <td>{{ dealership.address_two }}</td>
+                    <td>{{ dealership.city }}</td>
+                    <td>{{ dealership.state }}</td>
+                    <td>{{ dealership.zip }}</td>
+                    <td>{{ dealership.phone }}</td>
+                    <td>{{ dealership.website }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

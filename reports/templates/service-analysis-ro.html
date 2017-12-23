@@ -1,0 +1,69 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% load humanize %}
+
+{% block page-title %}
+<title>Repair Orders Service Analysis Report</title>
+{% endblock %}
+
+{% block nav-active %}
+<li><a href="{% url 'home' %}">Home</a></li>
+<li><a href="#">Executive Summary</a></li>
+<li><a href="{% url 'database-analysis' %}">Database Analysis</a></li>
+<li><a href="{% url 'comm-analysis' %}">Communication Analysis</a></li>
+<li class="active"><a href="{% url 'service-analysis' %}">Service Analysis</a></li>
+<li><a href="#">Vehicle Analysis</a></li>
+<li><a href="#">Segment Analysis</a></li>
+{% endblock %}
+
+{% block page-header %}
+<h1 class="page-header" align="center">Repair Orders Service Analysis Report</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <table class="table table-fit table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Quantity Mailed</th>
+                    <th>Received</th>
+                    <th>Responses</th>
+                    <th>Received with No Response</th>
+                    <th>Avg. $ per RO</th>
+                    <th>Total Customers</th>
+                    <th>Engaged Customers</th>
+                    <th>Disengaged Customers</th>
+                    <th>Dormant Customers</th>
+                    <th>Restricted Customers</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for ro in ros %}
+                <tr>
+                    <td>{{ ro.date }}</td>
+                    <td>{{ ro.mailed|intcomma }}</td>
+                    <td>{{ ro.received|intcomma }}</td>
+                    <td>{{ ro.responses|intcomma }}</td>
+                    <td>{{ ro.received_no_response|intcomma }}</td>
+                    <td>${{ ro.avg_revenue_per_ro }}</td>
+                    <td>{{ ro.total_customers|intcomma }}</td>
+                    <td>{{ ro.engaged_customers|intcomma }}</td>
+                    <td>{{ ro.disengaged_customers|intcomma }}</td>
+                    <td>{{ ro.dormant_customers|intcomma }}</td>
+                    <td>{{ ro.restricted_customers|intcomma }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

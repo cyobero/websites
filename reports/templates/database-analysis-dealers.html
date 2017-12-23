@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block page-title %}
+<title>Dealers Database Analysis Report</title>
+{% endblock %}
+
+{% block nav-active %}
+<li><a href="{% url 'home' %}">Home</a></li>
+<li><a href="#">Executive Summary</a></li>
+<li class="active"><a href="{% url 'database-analysis' %}">Database Analysis</a></li>
+<li><a href="{% url 'comm-analysis' %}">Communication Analysis</a></li>
+<li><a href="{% url 'service-analysis' %}">Service Analysis</a></li>
+<li><a href="#">Vehicle Analysis</a></li>
+<li><a href="#">Segment Analysis</a></li>
+{% endblock %}
+
+{% block page-header %}
+<h1 class="page-header" align="center">Dealers Database Analysis</h1><br>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-fit table-hover table-striped">
+                <thead>
+                <tr>
+                    <th>Dealer</th>
+                    <th>Title</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Dealership</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for dealer in dealers %}
+                <tr>
+                    <td>{{ dealer.first_name }} {{ dealer.last_name }}</td>
+                    <td>{{ dealer.title }}</td>
+                    <td>{{ dealer.phone }}</td>
+                    <td>{{ dealer.email }}</td>
+                    <td>{{ dealer.dealership }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+

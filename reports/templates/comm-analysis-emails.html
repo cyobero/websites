@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% load humanize %}
+
+{% block page-title %}
+<title>Email Communications Communication Analysis Report</title>
+{% endblock %}
+
+{% block nav-active %}
+<li><a href="{% url 'home' %}">Home</a></li>
+<li><a href="#">Executive Summary</a></li>
+<li><a href="{% url 'database-analysis' %}">Database Analysis</a></li>
+<li class="active"><a href="{% url 'comm-analysis' %}">Communication Analysis</a></li>
+<li><a href="{% url 'service-analysis' %}">Service Analysis</a></li>
+<li><a href="#">Vehicle Analysis</a></li>
+<li><a href="#">Segment Analysis</a></li>
+{% endblock %}
+
+{% block page-header %}
+<h1 class="page-header" align="center">Email Communications Communication Analysis Report</h1><br>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-fit table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Region</th>
+                    <th>Offer</th>
+                    <th>Emails Sent</th>
+                    <th>Emails Received</th>
+                    <th>Emails Responded</th>
+                    <th>Emails Received with No Response</th>
+                    <th>Reception Rate (%)</th>
+                    <th>Response Rate (%)</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for email in emails %}
+                <tr>
+                    <td>{{ email.date }}</td>
+                    <td>{{ email.region }}</td>
+                    <td>{{ email.offer }}</td>
+                    <td>{{ email.emails_sent|intcomma }}</td>
+                    <td>{{ email.emails_received|intcomma }}</td>
+                    <td>{{ email.email_responses|intcomma }}</td>
+                    <td>{{ email.email_received_no_response|intcomma }}</td>
+                    <td>{{ email.reception_rate }}</td>
+                    <td>{{ email.response_rate }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
