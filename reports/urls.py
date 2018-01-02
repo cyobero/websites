@@ -30,10 +30,16 @@ urlpatterns = [
     url(r'^comm-analysis/emails/$', comm_analysis_emails, name='comm-analysis-emails'),
     url(r'^comm-analysis/phones/$', comm_analysis_phones, name='comm-analysis-phones'),
     url(r'^comm-analysis/letters/$', comm_analysis_letters, name='comm-analysis-letters'),
+    url(r'^comm-analysis/campaign-performance/$', comm_analysis_campaigns, name='comm-analysis-campaigns'),
     url(r'^comm-analysis/$', comm_analysis, name='comm-analysis'),
     url(r'^service-analysis/customer-service-history/$', service_analysis_history, name='service-analysis-history'),
     url(r'^service-analysis/repair-orders/$', service_analysis_ro, name='service-analysis-ro'),
+    url(r'^service-analysis/order-history/$', service_analysis_orders, name='service-analysis-orders'),
     url(r'^service-analysis/$', service_analysis, name='service-analysis'),
+    url(r'^vehicle-analysis/vehicle-sales/$', vehicle_analysis_sales, name='vehicle-analysis-sales'),
+    url(r'^vehicle-analysis/$', vehicle_analysis, name='vehicle-analysis'),
+    url(r'^executive-summary/vehicle-sales/$', executive_summary_vehicles, name='executive-summary-vehicle-sales'),
+    url(r'^executive-summary/$', executive_summary, name='executive-summary'),
 ]
 
 if settings.DEBUG:

@@ -87,14 +87,27 @@ class LettersCommunication(models.Model):
 
 
 class CampaignPerformance(models.Model):
+    start_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
     campaign = models.CharField(max_length=100)
     calls = models.IntegerField()
     emails = models.IntegerField()
     texts = models.IntegerField()
     prints = models.IntegerField()
+    calls_received = models.FloatField(blank=True, null=True)
+    emails_received = models.FloatField(blank=True, null=True)
+    texts_received = models.FloatField(blank=True, null=True)
+    prints_received = models.FloatField(blank=True, null=True)
+    calls_responded = models.FloatField(blank=True, null=True)
+    emails_responded = models.FloatField(blank=True, null=True)
+    texts_responded = models.FloatField(blank=True, null=True)
+    prints_responded = models.FloatField(blank=True, null=True)
 
-    def total(self):
+    def total_sent(self):
         return self.calls + self.emails + self.texts + self.prints
+
+    def total_received(self):
+        return self.calls_received + self.emails_received + self.texts_received + self.prints_received
 
     def __unicode__(self):
         return self.campaign
@@ -103,4 +116,3 @@ class CampaignPerformance(models.Model):
         verbose_name = 'Campaign Performance'
         verbose_name_plural = 'Campaign Performances'
         ordering = ['campaign', ]
-

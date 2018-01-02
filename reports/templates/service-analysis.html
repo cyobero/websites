@@ -7,11 +7,11 @@
 
 {% block nav-active %}
 <li><a href="{% url 'home' %}">Home</a></li>
-<li><a href="#">Executive Summary</a></li>
+<li><a href="{% url 'executive-summary' %}">Executive Summary</a></li>
 <li><a href="{% url 'database-analysis' %}">Database Analysis</a></li>
 <li><a href="{% url 'comm-analysis' %}">Communication Analysis</a></li>
 <li class="active"><a href="{% url 'service-analysis' %}">Service Analysis</a></li>
-<li><a href="#">Vehicle Analysis</a></li>
+<li><a href="{% url 'vehicle-analysis' %}">Vehicle Analysis</a></li>
 <li><a href="#">Segment Analysis</a></li>
 {% endblock %}
 
@@ -24,17 +24,24 @@
 
     <div class="row">
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <a href="{% url 'service-analysis-ro' %}">
                 <img src="{% static 'folder_icon_navy_blue.png' %}" height="50" width="55">
                 <p>Repair Orders</p>
             </a>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
             <a href="{% url 'service-analysis-history' %}">
                 <img src="{% static 'folder_icon_navy_blue.png' %}" height="50" width="55">
                 <p>Customer Service History</p>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="{% url 'service-analysis-orders' %}">
+                <img src="{% static 'folder_icon_navy_blue.png' %}" height="50" width="55">
+                <p>Order History</p>
             </a>
         </div>
 

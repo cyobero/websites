@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'databaseAnalysis',
     'commAnalysis',
     'serviceAnalysis',
+    'vehicleAnalysis',
+    'executiveSummary',
 ]
 
 MIDDLEWARE = [

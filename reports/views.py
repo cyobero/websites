@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from databaseAnalysis.models import Customer, Dealership, Dealer, Vehicle
-from commAnalysis.models import EmailCommunication, PhoneCommunication, LettersCommunication
-from serviceAnalysis.models import CustomerServiceHistory, RepairOrders
+from commAnalysis.models import EmailCommunication, PhoneCommunication, LettersCommunication, CampaignPerformance
+from serviceAnalysis.models import CustomerServiceHistory, RepairOrders, OrderHistory
+from vehicleAnalysis.models import VehicleSales
+from executiveSummary.models import VehicleSalesExecutive
 
 
 def home(request):
@@ -63,3 +65,31 @@ def service_analysis_history(request):
 def service_analysis_ro(request):
     ros = RepairOrders.objects.all()
     return render(request, 'service-analysis-ro.html', {'ros': ros})
+
+
+def vehicle_analysis(request):
+    return render(request, 'vehicle-analysis.html')
+
+
+def vehicle_analysis_sales(request):
+    sales = VehicleSales.objects.all()
+    return render(request, 'vehicle-analysis-sales.html', {'sales': sales})
+
+
+def comm_analysis_campaigns(request):
+    campaigns = CampaignPerformance.objects.all()
+    return render(request, 'comm-analysis-campaigns.html', {'campaigns': campaigns})
+
+
+def executive_summary(request):
+    return render(request, 'executive-summary.html')
+
+
+def executive_summary_vehicles(request):
+    vehicles = VehicleSalesExecutive.objects.all()
+    return render(request, 'executive-summary-vehicle-sales.html', {'vehicles': vehicles})
+
+
+def service_analysis_orders(request):
+    orders = OrderHistory.objects.all()
+    return render(request, 'service-analysis-order-history.html', {'orders': orders})

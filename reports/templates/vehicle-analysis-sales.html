@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% load humanize %}
+
+{% block page-title %}
+<title>Vehicle Sales Vehicle Analysis Report</title>
+{% endblock %}
+
+{% block nav-active %}
+<li><a href="{% url 'home' %}">Home</a></li>
+<li><a href="{% url 'executive-summary' %}">Executive Summary</a></li>
+<li><a href="{% url 'database-analysis' %}">Database Analysis</a></li>
+<li><a href="{% url 'comm-analysis' %}">Communication Analysis</a></li>
+<li><a href="{% url 'service-analysis' %}">Service Analysis</a></li>
+<li class="active"><a href="{% url 'vehicle-analysis' %}">Vehicle Analysis</a></li>
+<li><a href="#">Segment Analysis</a></li>
+{% endblock %}
+
+{% block page-header %}
+<h1 class="page-header"></h1><br>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            <table class="table table-fit table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Region</th>
+                    <th>Vehicle</th>
+                    <th>New/Used</th>
+                    <th>Units Sold</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for sale in sales %}
+                <tr>
+                    <td>{{ sale.date }}</td>
+                    <td>{{ sale.region }}</td>
+                    <td>{{ sale.vehicle }}</td>
+                    <td>{{ sale.vehicle_type }}</td>
+                    <td>{{ sale.units_sold }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from databaseAnalysis.models import Customer, Vehicle
+from databaseAnalysis.models import Customer, Vehicle, Dealership, Dealer
 
 # Create your models here.
 class CustomerServiceHistory(models.Model):
@@ -45,4 +45,30 @@ class RepairOrders(models.Model):
         ordering = ['-date', ]
 
 
+class OrderHistory(models.Model):
+    region_choices = (
+        ('North', 'North'),
+        ('South', 'South'),
+        ('Central', 'Central'),
+        ('East', 'East'),
+        ('West', 'West'),
+    )
+
+    date = models.DateField()
+    region = models.CharField(max_length=7, choices=region_choices)
+    dealer = models.ForeignKey(Dealer, on_delete=models.CASCADE)
+    dealership = models.ForeignKey(Dealership, on_delete=models.CASCADE)
+    item = models.CharField(max_length=200)
+    quantity = models.IntegerField()
+    cost = models.FloatField()
+    order_date = models.DateField()
+    delivery_date = models.DateField()
+
+    def __unicode__(self):
+        return '%s Ordered on %s' % (self.item, str(self.order_date))
+
+    class Meta:
+        verbose_name = 'Order History'
+        verbose_name_plural = 'Order Histories'
+        ordering = ['-date', 'item', 'region', ]
 
